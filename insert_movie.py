@@ -63,6 +63,5 @@ if __name__ == '__main__':
         id, name, genre = process_genre(text)
         insert_into_graph(id, name, genre, graph)
         print(id)
-
-
     # stop()
+# GoldenEye
