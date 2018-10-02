@@ -1,6 +1,8 @@
 import timeit
 from py2neo import Graph, Node, Relationship
 
+
+graph = Graph(password='fighting33')
 user_map = {}
 
 def read_file_by_line(filename):
@@ -19,7 +21,6 @@ def insert_rating(node_id, rating, node_movie, graph):
 
 def main():
     # Can I keep the user_node
-    graph = Graph(password='fighting33')
     text_generator = read_file_by_line('./ml-10M100K/ratings.dat')
     # for text in text_generator:
     for text in text_generator:
