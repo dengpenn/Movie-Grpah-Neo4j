@@ -15,7 +15,7 @@ graph = Graph(password='fighting33')
 
 # average rating of user
 # find the movies of name which receive the most rating
-# find the movies which receive the highest rating
+# find the movies which receive the highest average rating
 '''
 
 def task_1():
@@ -64,18 +64,33 @@ def task_4(user_id):
 def task_5():
     movie_rating = {}
     movie_length = graph.run('match (m:Movie) return count(m)').data()[0]['count(m)']
-    for each_movie in range(movie_length):
+    for each_movie in range(150):
         ratings_number = graph.run('match (u:User)-[:RATINGS]->(m:Movie{id:\'%s\'}) return count(u)' % each_movie).data()[0]['count(u)']
-        movie_length[each_movie] = int(ratings_number)
-    return movie_rating
+        movie_rating[each_movie] = int(ratings_number)
+
+    maximum = max(movie_rating, key=movie_rating.get)  # Just use 'min' instead of 'max' for minimum.
+    movie_name = graph.run('match (m:Movie{id:\'%s\'}) return (m.name)' % maximum).data()[0]['(m.name)']
+    return movie_name
+
 
 def task_6():
-    pass
+    movie_rating = {}
+    movie_length = graph.run('match (m:Movie) return count(m)').data()[0]['count(m)']
+    for each_movie in range(150):
+        ratings_number = graph.run('match (u:User)-[r:RATINGS]->(m:Movie{id:\'%s\'}) return avg(tofloat(r.rating))' % each_movie).data()[0]['avg(tofloat(r.rating))']
+        # ['avg(tofloat(count(u))']
+        if ratings_number is None:
+            ratings_number = 0
+        movie_rating[each_movie] = float(ratings_number)
 
-
+    maximum = max(movie_rating, key=movie_rating.get)  # Just use 'min' instead of 'max' for minimum.
+    movie_name = graph.run('match (m:Movie{id:\'%s\'}) return (m.name)' % maximum).data()[0]['(m.name)']
+    print(movie_name)
+    print('Higest Rating is')
+    print(movie_rating[maximum])
 
 if __name__ == '__main__':
-    temp = task_5()
+    task_6()
     # task_4(1)
     # task_2(1)
 
