@@ -14,7 +14,7 @@ Based on the test, `neo4j-admin import` is the most efficient way to insert your
 ## Prepare your data
 
 `neo4j-admin import` requires to use a new database. You need to assign a value to `--database`(the default `--graph.db`) may not work.
-After creating the ``, you need to switch the database in the `./conf/neo4j.conf` file which is `dbms.active_database=some_database.db`.
+After creating a new database, you need to switch the database in the `./conf/neo4j.conf` file which is `dbms.active_database=some_database.db`.
 
 To make the `import` command work, the data should look like this:
 
