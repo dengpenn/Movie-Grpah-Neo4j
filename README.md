@@ -53,6 +53,7 @@ The csv file should look like this:
 | 1                  | 5       | 355               | RATINGS | 
 | 1                  | 5       | 356               | RATINGS | 
 | 1                  | 5       | 362               | RATINGS | 
+
 The relationship between the user and movie are called `RATINGS` and scores which is the property of `RATINGS` is given by `ratings` field.
 
 
