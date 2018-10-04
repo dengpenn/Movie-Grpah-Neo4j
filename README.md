@@ -41,6 +41,7 @@ To make the `import` command work, the data should look like this:
 Because the movie_id and user_id both are sequenal identifier and many of them have some value, so id space like `(user-id)` and `(movie-id)` are needed.
 
 The csv file should look like this:
+
 | :START_ID(user-id) | ratings | :END_ID(movie-id) | :TYPE   | 
 |--------------------|---------|-------------------|---------| 
 | 1                  | 5       | 122               | RATINGS | 
